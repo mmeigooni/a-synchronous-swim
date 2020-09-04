@@ -22,8 +22,12 @@ describe('server responses', () => {
   });
 
   it('should respond to a GET request for a swim command', (done) => {
-    // write your test here
-    done();
+    let {req, res} = server.mock('http://127.0.0.1:3000/', 'GET');
+    httpHandler.router(req, res, () => {
+      expect(res._responseCode).to.equal(200);
+      expect(res._ended).to.equal(true);
+      done();
+    });
   });
 
   xit('should respond with 404 to a GET request for a missing background image', (done) => {

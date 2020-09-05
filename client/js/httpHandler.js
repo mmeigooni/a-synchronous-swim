@@ -20,8 +20,8 @@
   };
   // let {req, res} = swimCommandFetcher();
   // console.log(res);
-  const handleData = (data) => {console.log('Data coming through: ', data)};
-  setInterval(swimCommandFetcher, 4000);
+  // const handleData = (data) => {console.log('Data coming through: ', data)};
+  setInterval(() => {swimCommandFetcher(SwimTeam.move)}, 5000);
   // we are receiving data per the comment above and pinging the server
 
   /////////////////////////////////////////////////////////////////////

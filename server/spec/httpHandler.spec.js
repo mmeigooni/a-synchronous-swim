@@ -22,9 +22,12 @@ describe('server responses', () => {
   });
 
   it('should respond to a GET request for a swim command', (done) => {
-    let {req, res} = server.mock('http://127.0.0.1:3000/', 'GET');
+    let {req, res} = server.mock('/', 'GET');
+    const directions = ['up', 'down', 'left', 'right'];
     httpHandler.router(req, res, () => {
       expect(res._responseCode).to.equal(200);
+      expect(req.method).to.equal('GET');
+      expect(directions).to.contain(res._data.toString());
       expect(res._ended).to.equal(true);
       done();
     });

@@ -28,7 +28,7 @@ var request = function(url, method, postdata) {
 
 var response = function() {
   this._ended = false;
-  this._responseCode = null;
+  this._responseCode = {greeting: 'Hello'};
   this._headers = null;
   this._data = Buffer.alloc(0);
 

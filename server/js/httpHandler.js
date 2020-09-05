@@ -15,6 +15,9 @@ module.exports.initialize = (queue) => {
 module.exports.router = (req, res, next = ()=>{}) => {
   console.log('Serving request type ' + req.method + ' for url ' + req.url);
   res.writeHead(200, headers);
-  res.end();
+  res.end(JSON.stringify({greeting: 'Hi'}));
   next(); // invoke next() at the end of a request to help with testing!
 };
+
+// create a helper function that generates a random direction
+

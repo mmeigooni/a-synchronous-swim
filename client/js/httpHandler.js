@@ -6,6 +6,24 @@
   // TODO: build the swim command fetcher here
   //
 
+  const swimCommandFetcher = (callback = ()=>{}) => {
+    $.ajax({
+      type: 'GET',
+      url: serverUrl,
+      data: 'Data to be here',
+      success: (data) => {
+        console.log('Data:', data);
+        callback(data);
+      }
+      // response: res.test
+    });
+  };
+  // let {req, res} = swimCommandFetcher();
+  // console.log(res);
+  const handleData = (data) => {console.log('Data coming through: ', data)};
+  setInterval(swimCommandFetcher, 4000);
+  // we are receiving data per the comment above and pinging the server
+
   /////////////////////////////////////////////////////////////////////
   // The ajax file uplaoder is provided for your convenience!
   // Note: remember to fix the URL below.

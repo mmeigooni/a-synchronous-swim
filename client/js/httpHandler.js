@@ -10,19 +10,27 @@
     $.ajax({
       type: 'GET',
       url: serverUrl,
-      data: 'Data to be here',
       success: (data) => {
         console.log('Data:', data);
         callback(data);
       }
-      // response: res.test
     });
   };
-  // let {req, res} = swimCommandFetcher();
-  // console.log(res);
-  // const handleData = (data) => {console.log('Data coming through: ', data)};
-  setInterval(() => {swimCommandFetcher(SwimTeam.move)}, 5000);
-  // we are receiving data per the comment above and pinging the server
+
+  // setInterval(() => {swimCommandFetcher(SwimTeam.move)}, 5000);
+
+  const backgroundFetcher = (callback = ()=>{}) => {
+    $.ajax({
+      type: 'GET',
+      url: serverUrl + '/background',
+      success: (data) => {
+        console.log('Data:', data);
+        // callback(data);
+      }
+    });
+  };
+
+  // setInterval(backgroundFetcher, 5000);
 
   /////////////////////////////////////////////////////////////////////
   // The ajax file uplaoder is provided for your convenience!
@@ -35,7 +43,7 @@
     $.ajax({
       type: 'POST',
       data: formData,
-      url: 'FILL_ME_IN',
+      url: serverUrl + '/background',
       cache: false,
       contentType: false,
       processData: false,
